@@ -1,0 +1,23 @@
+
+一、dsfbasic-provider 是一个web程序，运行在tomcat等容器中，可以对外提供http restful接口服务、soa蜂巢服务
+
+二、各个源码包介绍：
+
+com.ly.dsfbasic
+			 |
+			 |----controller  存放restful Controller控制器，用于http restful请求，如果不需要对外单独提供http restful 服务，则可以不写
+			 |
+			 |----soa 存放蜂巢相关的服务实现类
+			 |
+			 
+			
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 

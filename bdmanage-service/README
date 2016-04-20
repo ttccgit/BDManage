@@ -1,0 +1,26 @@
+源码包介绍：
+
+com.ly.dsfbase.service
+			 |
+			 |----entity  存放实体类
+			 |
+			 |----dao  存放Mybatis访问数据库接口，底层默认接入的DataSource是dal（即java版的tcdbms，需要配合统一配置中心使用）
+			 |
+			 |----service  存放业务逻辑服务类
+			 |
+			 |----component  存放常用的组件类，如：访问redis、turbomq生产者、turbomq消费者、统一权限认证、图片客户端
+			 |
+			 |----constant   存放常量值类
+			 |
+			 |----util  存放一些工具类
+			 |
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 

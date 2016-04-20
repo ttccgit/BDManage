@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- 控制台输出 -->
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<append>true</append>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS,GMT+8} [%t] %p: %m [%F:%L]%n</pattern>
+			<charset class="java.nio.charset.Charset">UTF-8</charset>
+		</encoder>
+	</appender>
+	
+	<!-- logback日志文件配置 -->
+	<appender name="logbackAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.path}/dsfbase/server.log</file>
+		<append>true</append>
+		
+	    <!-- 以日期+文件大小切割 方式-->
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>${log.path}/dsfbase/otherdays/%d{yyyy-MM-dd}/server.%i.log.zip</fileNamePattern>
+	        <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	            <maxFileSize>100MB</maxFileSize>
+	        </timeBasedFileNamingAndTriggeringPolicy>
+	    </rollingPolicy>
+		
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS,GMT+8} [%t] %p: %m [%F:%L]%n</pattern>
+			<charset class="java.nio.charset.Charset">UTF-8</charset>
+		</encoder>
+	</appender>
+	
+	<!-- 天网日志文件配置 -->
+	<appender name="skynetAppender" class="com.ly.tcbase.skynet.clientagent.log.appender.ThriftLogbackAppender">
+	</appender>
+	
+	<!-- mybatis 日志输出
+	<logger name="mybatis"> 
+		<level value="DEBUG" />
+	    <appender-ref ref="stdout" />
+	</logger>   
+ 	-->
+ 	
+	<root>
+		<level value="${log.level}" />
+		<appender-ref ref="stdout" />
+		<appender-ref ref="logbackAppender" />
+		<appender-ref ref="skynetAppender" />
+	</root>
+</configuration>

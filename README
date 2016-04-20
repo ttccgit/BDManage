@@ -1,0 +1,21 @@
+
+dsfbase-api  蜂巢API服务接口定义，是个jar包
+
+dsfbase-client  蜂巢服务访问客户端，是个jar包
+
+dsfbase-provider  蜂巢服务主程序，是个war包
+
+dsfbase-service  蜂巢业务逻辑服务，是个jar包
+
+
+resources    目录存放的是classpath下的内容
+	|
+	|
+	|----profiles  存放的是各个配置信息，线下配置放在profile-dev.properties中，线上配置放在profile-prod.properties中
+	|
+	|----spring 存放spring相关配置信息
+	|
+	|----com 存放的是mybatis Mapper映射文件
+	| 
+	|----mybatis 存放mybatis的相关配置
+	|

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="
+	    http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://code.alibabatech.com/schema/dubbo
+		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 定义的 -->
+    <!--<bean id="soaService" class="com.ly.dsfbase.provider.soa.SOAServiceImpl"/>-->
+	<!---->
+	<!--&lt;!&ndash; 定义应用 &ndash;&gt;-->
+    <!--<dubbo:application name="dubbo_test_service" organization="tc" owner="test5000"/>-->
+    <!---->
+    <!--&lt;!&ndash; 将服务注册到蜂巢 &ndash;&gt;-->
+    <!--<dubbo:registry address="testdsf.tcent.cn" protocol="tcdsf"/>-->
+	<!---->
+	<!--&lt;!&ndash; 设置此服务在8888端口上监听http restful调用，供.net调用 &ndash;&gt;-->
+    <!--<dubbo:protocol name="tcdsfrest" port="8888" threads="500" server="tomcat" accepts="500"/>-->
+ 	<!---->
+ 	<!--&lt;!&ndash;定义服务&ndash;&gt;-->
+    <!--<dubbo:service-->
+            <!--interface="com.ly.dsfbase.api.ISOAService"-->
+            <!--ref="soaService"-->
+            <!--clevel="1" -->
+            <!--plevel="5"-->
+            <!--version="1.0.0.0"/>-->
+</beans>

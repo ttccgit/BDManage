@@ -1,0 +1,142 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.ly.bdmanage</groupId>
+        <artifactId>BDManage</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+  
+  <artifactId>bdmanage-provider</artifactId>
+  <packaging>war</packaging>
+  <name>bdmanage-provider</name>
+  <description>base data manage provider</description>
+  
+  <dependencies>
+  	   <!--接口-->
+
+
+	   <dependency>
+	        <groupId>com.ly.bdmanage</groupId>
+			<artifactId>bdmanage-service</artifactId>
+	        <version>${project.version}</version>
+	   </dependency>
+	       
+       
+  	   <!-- servlet -->
+  	   <dependency> 
+	        <groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+	       <scope>provided</scope> 
+	   </dependency> 
+	   
+	   <!-- spring -->
+	   <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+				
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		</dependency>
+				
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+		</dependency>
+		
+		<!--dubbo-->
+		<dependency>
+            <groupId>com.ly</groupId>
+            <artifactId>dubbo</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<groupId>log4j</groupId>
+            		<artifactId>log4j</artifactId>
+            	</exclusion>
+            </exclusions>
+        </dependency>
+        
+        <!--zookeeper-->
+        <dependency> 
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.1</version>
+            <exclusions>
+            	<exclusion>
+            		<groupId>log4j</groupId>
+            		<artifactId>log4j</artifactId>
+            	</exclusion>
+            </exclusions>
+        </dependency>
+        
+        <!--下面3个是提供http rest接口需要的依赖-->
+        <dependency> 
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>3.0.7.Final</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxb-provider</artifactId>
+            <version>3.0.7.Final</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson-provider</artifactId>
+            <version>3.0.7.Final</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.0.7.Final</version>
+            <exclusions>
+            	<exclusion>
+            		<groupId>org.apache.httpcomponents</groupId>
+            		<artifactId>httpclient</artifactId>
+            	</exclusion>
+            </exclusions>
+        </dependency>
+        
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.0.0.GA</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+        </dependency>
+        
+        <!-- 天网日志 -->
+        <dependency>
+		    <groupId>com.ly.tcbase</groupId>
+		    <artifactId>skynet.logger</artifactId>
+		</dependency>
+      <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>javax.servlet-api</artifactId>
+          <version>${servlet.version}</version>
+          <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>jstl</artifactId>
+          <version>${jstl.version}</version>
+      </dependency>
+
+   </dependencies>
+   
+</project>

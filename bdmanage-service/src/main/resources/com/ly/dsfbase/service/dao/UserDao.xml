@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.ly.dsfbase.service.dao.UserDao">
+		
+	<resultMap type="User" id="userResultMap">  
+        <id property="id" column="id"/>  
+        <result property="name" column="name"/>  
+        <result property="sex" column="sex"/>  
+        <result property="age" column="age"/>  
+        <result property="remark" column="remark"/>  
+    </resultMap>  
+    
+    <insert id="insertUser" parameterType="User" useGeneratedKeys="false" keyColumn="id">
+       insert into t_user(name, sex, age, remark) values(#{name}, #{sex}, #{age}, #{remark})
+    </insert>
+   
+    <select id="selectUser" parameterType="long" resultMap="userResultMap">  
+       select id,name,sex,age,remark from t_user where id=#{id}  
+    </select> 
+    
+    <select id="selectUsers" resultMap="userResultMap">  
+       select id,name,sex,age,remark from t_user
+    </select> 
+    
+    <update id="updateUser" parameterType="User">
+       update t_user set name=#{name}, age=#{age}, sex=#{sex}, remark=#{remark} where id=#{id}
+    </update>
+   
+    <delete id="deleteUser" parameterType="long">
+       delete from t_user where id=#{id}
+    </delete>
+</mapper>

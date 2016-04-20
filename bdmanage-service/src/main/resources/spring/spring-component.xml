@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-4.0.xsd           
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-4.0.xsd
+						http://www.springframework.org/schema/mvc 
+						http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd          
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-4.0.xsd" >
+	
+	<!-- datasource config -->
+	<!--<bean id="dsconfig" class="com.ly.dal.config.DataSourceConfig">-->
+	<!---->
+		<!--&lt;!&ndash; 配置中心URL &ndash;&gt;  -->
+		<!--<property name="uniformUrl">-->
+		    <!--<value>${uniform.url}</value>-->
+		<!--</property>-->
+		<!---->
+		<!--&lt;!&ndash; 配置中心配置的项目名(标识)  &ndash;&gt; -->
+		<!--<property name="uniformProjectName">-->
+		    <!--<value>${uniform.project.name}</value>-->
+		<!--</property>-->
+		<!---->
+		<!--&lt;!&ndash; 数据库连接池最大连接数  默认 200 &ndash;&gt;-->
+		<!--<property name="maxConnections">-->
+		    <!--<value>${db.maxConnections}</value>-->
+		<!--</property>-->
+		<!---->
+		<!--&lt;!&ndash; 数据库连接池初始连接数 默认 5 &ndash;&gt;-->
+		<!--<property name="initialSize">-->
+		    <!--<value>${db.initialSize}</value>-->
+		<!--</property>-->
+		<!---->
+		<!--&lt;!&ndash; 获取连接的最大等待时间 ，单位：毫秒，默认 3000 &ndash;&gt;-->
+	    <!--<property name="maxWait">-->
+	        <!--<value>${db.maxWait}</value>-->
+	    <!--</property>-->
+		<!---->
+		<!--&lt;!&ndash; 最大空闲连接数，默认 10 &ndash;&gt;-->
+		<!--<property name="maxIdle">-->
+		    <!--<value>${db.maxIdle}</value>-->
+		<!--</property>-->
+		<!---->
+		<!--&lt;!&ndash; 最小空闲连接数，默认 5 &ndash;&gt;-->
+		<!--<property name="minIdle">-->
+		    <!--<value>${db.minIdle}</value>-->
+		<!--</property>-->
+		<!---->
+		<!--&lt;!&ndash; 执行sql前是否测试连接，默认true &ndash;&gt;-->
+		<!--<property name="testOnBorrow">-->
+		    <!--<value>${db.testOnBorrow}</value>-->
+		<!--</property>-->
+		<!---->
+		<!--&lt;!&ndash; 执行测试连接的sql，默认select 1 &ndash;&gt;-->
+		<!--<property name="validationQuery">-->
+		    <!--<value>${db.validationQuery}</value>-->
+		<!--</property>-->
+		<!---->
+		<!--&lt;!&ndash; 测试连接超时时间，单位：秒 ，默认为 3s &ndash;&gt;-->
+		<!--<property name="validationQueryTimeout">-->
+		    <!--<value>${db.validationQueryTimeout}</value>-->
+		<!--</property>-->
+	<!--</bean>-->
+	    <!---->
+	<!--&lt;!&ndash; datasource &ndash;&gt;-->
+	<!--<bean id="dataSource" class="com.ly.dal.datasource.RouteableDataSource" destroy-method="close">-->
+	   <!--<constructor-arg>   -->
+	       <!--<ref bean="dsconfig" />-->
+	   <!--</constructor-arg>   -->
+	<!--</bean>-->
+
+
+
+
+	<!-- 图片组件客户端 -->
+	<bean id="imgClient" class="com.ly.dsfbase.service.component.ImgClient">
+		<property name="imgConfigUrl">
+			<value>${img.config.url}</value>
+		</property>
+		
+		<property name="host">
+			<value>${img.server.host}</value>
+		</property>
+		
+		<property name="port">
+			<value>${img.server.port}</value>
+		</property>
+		
+		<property name="maxConns">
+			<value>${img.client.maxConns}</value>
+		</property>
+		
+		<property name="initConns">
+			<value>${img.client.initConns}</value>
+		</property>
+	</bean>
+	
+	<!-- Redis组件客户端 -->
+	<bean id="redisShardedPool" class="com.ly.dsfbase.service.component.RedisShardedPool">
+		<property name="shardedHost">
+			<value>${redis.host}</value>
+		</property>
+		
+		<property name="shardedPort">
+			<value>${redis.port}</value>
+		</property>
+		
+		<property name="password">
+			<value>${redis.password}</value>
+		</property>
+		
+		<property name="timeout">
+			<value>${redis.timeout}</value>
+		</property>
+		
+		<property name="maxIdle">
+			<value>${redis.maxIdle}</value>
+		</property>
+		
+		<property name="maxTotal">
+			<value>${redis.maxTotal}</value>
+		</property>
+		
+		<property name="maxWaitMillis">
+			<value>${redis.maxWaitMillis}</value>
+		</property>
+	</bean>
+	
+	<!-- 消息队列组件消费者客户端 -->
+	<bean id="turboMQConsumer" class="com.ly.dsfbase.service.component.TurboMQConsumer">
+		<property name="consumerGroup">
+			<value>${consumer.group}</value>
+		</property>
+		
+		<property name="turbomqNamesrvAddrs">
+			<value>${turbomq.namesrv.addrs}</value>
+		</property>
+		
+		<property name="consumerSubscribeTopics">
+			<value>${consumer.subscribe.topics}</value>
+		</property>
+		
+	</bean>
+	
+	<!-- 消息队列组件生产者客户端 -->
+	<bean id="turboMQProducer" class="com.ly.dsfbase.service.component.TurboMQProducer">
+		<property name="producerGroup">
+			<value>${producer.group}</value>
+		</property>
+		
+		<property name="turbomqNamesrvAddrs">
+			<value>${turbomq.namesrv.addrs}</value>
+		</property>
+		
+	</bean>
+	 
+</beans>
